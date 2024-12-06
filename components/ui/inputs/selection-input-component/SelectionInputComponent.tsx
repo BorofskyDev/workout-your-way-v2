@@ -3,20 +3,13 @@
 'use client'
 
 import React, { Fragment } from 'react'
-import {
-  Listbox,
-  Label,
-  Transition,
-  ListboxButton,
-  ListboxOptions,
-  ListboxOption,
-} from '@headlessui/react'
+import { Listbox, ListboxButton, ListboxOption, ListboxOptions, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 import styles from './SelectionInputComponent.module.scss'
 import { Option } from '@/libs/types' // Adjust the import path as needed
 
 interface BaseProps {
-  label: string
+  label?: string // Make label optional
   options: Option[]
   placeholder?: string
 }
@@ -57,10 +50,13 @@ const SelectionInputComponent: React.FC<SelectionInputComponentProps> = ({
 
   return (
     <div className={styles.container}>
-      <Listbox value={value} onChange={onChange} multiple={isMulti}>
-        <Label className={`font-header fw-medium ${styles.label}`}>
+      {label && (
+        <label className={`font-header fw-medium ${styles.internalLabel}`}>
           {label}
-        </Label>
+        </label>
+      )}{' '}
+      {/* Conditionally render label */}
+      <Listbox value={value} onChange={onChange} multiple={isMulti}>
         <div className={styles.relative}>
           <ListboxButton
             className={`py-100 px-200 font-body background-input br-4 bs2 my-200 border-1 border-input ${styles.button}`}
@@ -77,32 +73,36 @@ const SelectionInputComponent: React.FC<SelectionInputComponentProps> = ({
             leaveFrom='opacity-100'
             leaveTo='opacity-0'
           >
-            <ListboxOptions className={`br-3 border-3 border-input bs8 ${styles.options}`}>
+            <ListboxOptions
+              className={`br-3 border-3 border-input bs8  ${styles.options}`}
+            >
               {options.map((option) => (
                 <ListboxOption key={option.value} value={option} as={Fragment}>
                   {({ active, selected }) => (
                     <li
-                      className={`${active ? styles.activeOption : ''} ${
-                        styles.option
+                      className={`${styles.option} ${
+                        active ? styles.activeOption : ''
                       } background-input`}
                     >
                       {isMulti && (
                         <input
                           type='checkbox'
-                          checked={value.some(
-                            (selectedOption) =>
-                              selectedOption.value === option.value
-                          )}
+                          checked={selected}
                           readOnly
                           className='mr-2'
                         />
                       )}
-                      <span>{option.label}</span>
+                      <span
+                        className={`${
+                          selected ? 'font-semibold' : 'font-normal'
+                        } block truncate`}
+                      >
+                        {option.label}
+                      </span>
                       {!isMulti && selected && (
-                        <CheckIcon
-                          className={styles.checkIcon}
-                          aria-hidden='true'
-                        />
+                        <span className={styles.icon}>
+                          <CheckIcon className='h-5 w-5' aria-hidden='true' />
+                        </span>
                       )}
                     </li>
                   )}

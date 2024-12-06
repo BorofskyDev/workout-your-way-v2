@@ -1,0 +1,16 @@
+@use '../../../styles/mixins' as *;
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--small-spacing-200);
+}
+
+.addButton, .createExerciseButton {
+    cursor: pointer;
+    @include transitionMain;
+
+    &:hover, &:focus {
+        box-shadow: var(--bs-400);
+    }
+}
