@@ -1,22 +1,33 @@
-$spacing-scale: (
-  1: 100,
-  2: 200,
-  3: 300,
-  4: 400,
-  5: 500,
-  6: 600,
-  7: 700,
-  8: 800,
-  9: 900,
-  10: 1000,
-  11: 1100,
-  12: 1200,
-  13: 1300,
-  14: 1400,
-  15: 1500,
-  16: 1600,
-  17: 1700,
-  18: 1800,
-  19: 1900,
-  20: 2000
-);
+:root {
+    --small-spacing-100: 0.5rem;
+    --small-spacing-200: 1rem;
+    --small-spacing-300: 1.5rem;
+    --small-spacing-400: 2rem;
+    --small-spacing-500: 2.5rem;
+    --small-spacing-600: 3rem;
+    --small-spacing-700: 3.5rem;
+    --small-spacing-800: 4rem;
+    --small-spacing-900: 4.5rem;
+    --small-spacing-1000: 5rem;
+    --small-spacing-1100: 5.5rem;
+    --small-spacing-1200: 6rem;
+    --small-spacing-1300: 6.5rem;
+    --small-spacing-1400: 7rem;
+    --small-spacing-1500: 7.5rem;
+    --small-spacing-1600: 8rem;
+    --small-spacing-1700: 8.5rem;
+    --small-spacing-1800: 9rem;
+    --small-spacing-1900: 9.5rem;
+    --small-spacing-2000: 10rem;
+
+    --large-spacing-100: 10rem;
+    --large-spacing-200: 20rem;
+    --large-spacing-300: 30rem;
+    --large-spacing-400: 40rem;
+    --large-spacing-500: 50rem;
+    --large-spacing-600: 60rem;
+    --large-spacing-700: 70rem;
+    --large-spacing-800: 80rem;
+    --large-spacing-900: 90rem;
+
+}

@@ -35,8 +35,8 @@
 .skip-to-content {
   position: absolute;
   z-index: 9999;
-  background: hsl(var(--color-light));
-  color: hsl(var(--color-dark));
+  background: hsl(var(--text-color));
+  color: hsl(var(--background));
   padding: 0.5em 1em;
   margin-inline: auto;
   transform: translateY(-200%);

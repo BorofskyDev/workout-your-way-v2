@@ -17,7 +17,6 @@ a:visited,
 a:active,
 a:link {
   text-decoration: none;
-  font-family: var(--font-link);
 }
 
 ul,
@@ -52,14 +51,11 @@ h6 {
   overflow-wrap: break-word;
 }
 
-h1, h2 {
-    font-family: var(--font-title);
-}
+
 
 body {
-  background-color: hsl(var(--color-light));
-  color: hsl(var(--color-dark));
-  font-family: var(--font-content);
+  background-color: hsl(var(--background));
+  color: hsl(var(--text));
   font-size: var(--fs-400);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
