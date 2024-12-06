@@ -198,7 +198,7 @@ const CreateExerciseModal: React.FC<CreateExerciseModalProps> = ({
         {formError && <p className={styles.error}>{formError}</p>}
 
         {/* Submit Button */}
-        <SubmitButton type='submit' >
+        <SubmitButton className='background-bg5 border-hl5' type='submit' >
           {loading ? 'Creating...' : 'Create Exercise'}
         </SubmitButton>
       </form>

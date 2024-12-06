@@ -35,14 +35,14 @@ const ClientPortalPage: React.FC = () => {
       <PageHeading>Client Portal</PageHeading>
       <div className={styles.buttonGroup}>
         <ModalButton
-          className='background-bg6 border-hl6'
+          className='background-bg8 border-hl8'
           onClick={openProfileModal}
         >
           View Profile
         </ModalButton>
 
         <ModalButton
-          className='background-bg6 border-hl6'
+          className='background-bg1 border-hl1'
           onClick={openCreateExerciseModal}
         >
           Create Exercise

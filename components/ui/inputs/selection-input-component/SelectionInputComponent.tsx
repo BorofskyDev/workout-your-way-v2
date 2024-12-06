@@ -58,10 +58,16 @@ const SelectionInputComponent: React.FC<SelectionInputComponentProps> = ({
   return (
     <div className={styles.container}>
       <Listbox value={value} onChange={onChange} multiple={isMulti}>
-        <Label className={styles.label}>{label}</Label>
+        <Label className={`font-header fw-medium ${styles.label}`}>
+          {label}
+        </Label>
         <div className={styles.relative}>
-          <ListboxButton className={styles.button}>
-            <span className={styles.selected}>{displaySelected()}</span>
+          <ListboxButton
+            className={`py-100 px-200 font-body background-input br-4 bs2 my-200 border-1 border-input ${styles.button}`}
+          >
+            <span className={`font-body ${styles.selected}`}>
+              {displaySelected()}
+            </span>
             <SelectorIcon className={styles.icon} aria-hidden='true' />
           </ListboxButton>
 
@@ -71,14 +77,14 @@ const SelectionInputComponent: React.FC<SelectionInputComponentProps> = ({
             leaveFrom='opacity-100'
             leaveTo='opacity-0'
           >
-            <ListboxOptions className={styles.options}>
+            <ListboxOptions className={`br-3 border-3 border-input bs8 ${styles.options}`}>
               {options.map((option) => (
                 <ListboxOption key={option.value} value={option} as={Fragment}>
                   {({ active, selected }) => (
                     <li
                       className={`${active ? styles.activeOption : ''} ${
                         styles.option
-                      }`}
+                      } background-input`}
                     >
                       {isMulti && (
                         <input

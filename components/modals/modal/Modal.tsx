@@ -22,7 +22,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, classNa
       {isOpen && (
         <div className={styles.modalOverlay} onClick={onClose}>
           <motion.div
-            className={`background-main br-5 bs8 px-200 py-400 ${styles.modalContent} ${className}`}
+            className={`background-main br-5 bs8 px-200 py-600 ${styles.modalContent} ${className}`}
             onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
               e.stopPropagation()
             }

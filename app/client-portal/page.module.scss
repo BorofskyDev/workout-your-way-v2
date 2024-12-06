@@ -4,4 +4,10 @@
     align-items: center;
     justify-content: center;
     gap: var(--small-spacing-300);
+
+    .buttonGroup {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--small-spacing-300);
+    }
 }

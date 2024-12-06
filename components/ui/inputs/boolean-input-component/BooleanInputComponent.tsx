@@ -19,7 +19,7 @@ const BooleanInputComponent: React.FC<BooleanInputProps> = ({
   onChange,
 }) => {
   return (
-    <div className={styles.checkboxContainer}>
+    <div className={`${styles.checkboxContainer}`}>
       <label htmlFor={id} className={styles.checkboxLabel}>
         {label}
       </label>
@@ -28,7 +28,7 @@ const BooleanInputComponent: React.FC<BooleanInputProps> = ({
         id={id}
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
-        className={styles.checkbox}
+        className={`my-200 ${styles.checkbox}`}
       />
     </div>
   )

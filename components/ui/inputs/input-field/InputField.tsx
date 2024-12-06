@@ -40,13 +40,13 @@ const InputField: React.FC<InputFieldProps> = ({
 }) => {
   return (
     <div className={`border-2 my-400 p-200 br-4 bs5 background-bg8-500 ${styles.inputField}`}>
-      <label className='mr-100' htmlFor={id}>
+      <label className='mr-100 font-header' htmlFor={id}>
         {label}
       </label>
       {variant === 'textarea' ? (
         <textarea
           id={id}
-          className={`py-100 px-200 background-input border-1 bs2 border-input br-2 ${className}`}
+          className={`py-100 px-200 background-input border-1 bs2 border-input br-2 font-body ${className}`}
           value={value}
           onChange={onChange}
           required={required}
@@ -56,7 +56,7 @@ const InputField: React.FC<InputFieldProps> = ({
         <input
           type={type}
           id={id}
-          className={`py-100 px-200 background-input border-1 bs2 border-input br-2 ${className}`}
+          className={`py-100 px-200 background-input border-1 bs2 border-input br-2 font-body ${className}`}
           value={value}
           onChange={onChange}
           required={required}

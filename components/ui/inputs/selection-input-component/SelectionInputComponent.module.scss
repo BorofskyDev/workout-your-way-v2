@@ -19,10 +19,6 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0.5rem 1rem;
-  border: 1px solid #d1d5db; /* Tailwind's gray-300 */
-  border-radius: 0.375rem; /* Tailwind's rounded-md */
-  background-color: #ffffff;
   cursor: pointer;
 }
 
@@ -32,28 +28,28 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  
 }
 
 .icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: #6b7280; /* Tailwind's gray-500 */
+    width: 1.25rem;
+    height: 1.25rem;
+    color: hsl(var(--hl1)); /* Tailwind's gray-500 */
 }
 
 .options {
-  position: absolute;
-  width: 100%;
-  margin-top: 0.25rem;
-  background-color: #ffffff;
-  border: 1px solid #d1d5db; /* Tailwind's gray-300 */
-  border-radius: 0.375rem; /* Tailwind's rounded-md */
+    position: absolute;
+    width: 100%;
+    margin-top: 0.25rem;
+ 
   max-height: 15rem;
   overflow-y: auto;
   z-index: 1000;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Tailwind's shadow-lg */
+  
 }
 
 .option {
+    font-family: var(--sourceSans3);
   padding: 0.5rem 1rem;
   cursor: pointer;
   display: flex;
@@ -62,11 +58,11 @@
 }
 
 .activeOption {
-  background-color: #f3f4f6; /* Tailwind's gray-100 */
+  background-color: hsl(var(--bg2)); /* Tailwind's gray-100 */
 }
 
 .checkIcon {
   width: 1.25rem;
   height: 1.25rem;
-  color: #10b981; /* Tailwind's green-500 */
+  color: hsl(var(--input-border)); /* Tailwind's green-500 */
 }
