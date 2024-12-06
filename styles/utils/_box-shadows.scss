@@ -1,4 +1,9 @@
-.shadow-1 { box-shadow: 2px 2px 0 rgba(0, 0, 0, 0)}
-.shadow-2 { box-shadow: 4px 4px 0 rgba(0, 0, 0, 0)}
-.shadow-3 { box-shadow: 6px 6px 0 rgba(0, 0, 0, 0)}
-.shadow-4 { box-shadow: 8px 8px 0 rgba(0, 0, 0, 0)}
+.bs1 { box-shadow: var(--bs-100)}
+.bs2 { box-shadow: var(--bs-200)}
+.bs3 { box-shadow: var(--bs-300)}
+.bs4 { box-shadow: var(--bs-400)}
+.bs5 { box-shadow: var(--bs-500)}
+.bs6 { box-shadow: var(--bs-600)}
+.bs7 { box-shadow: var(--bs-700)}
+.bs8 { box-shadow: var(--bs-800)}
+

@@ -1,0 +1,12 @@
+@use '../../../../styles/mixins' as *;
+
+.actionButton {
+    padding: var(--small-spacing-200) 0;
+    box-shadow: var(--bs-200);
+    cursor: pointer;
+    @include transitionMain;
+
+    &:hover, &:focus {
+        box-shadow: var(--bs-400);
+    }
+}
