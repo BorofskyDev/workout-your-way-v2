@@ -35,7 +35,7 @@ const LoginPage: React.FC = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password)
-      router.push('/app/client-portal')
+      router.push('/client-portal')
     } catch (err: unknown) {
       // Type the error as unknown
       if (err instanceof FirebaseError) {
