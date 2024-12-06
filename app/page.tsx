@@ -7,13 +7,13 @@ import { auth, googleProvider } from '@/libs/firebase' // Adjust the import path
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import { useUser } from '../context/UserContext'
-import classNames from 'classnames'
 import GridCenterSection from '@/components/layouts/sections/GridCenterSection'
 import PageHeading from '@/components/typography/page-heading/PageHeading'
 import ActionButton from '@/components/ui/buttons/action-button/ActionButton'
 import InputField from '@/components/ui/inputs/input-field/InputField'
-import styles from './page.module.scss'
 import SubmitButton from '@/components/ui/buttons/submit-button/SubmitButton'
+import styles from './page.module.scss'
+import { FirebaseError } from 'firebase/app' // Import FirebaseError
 
 const LoginPage: React.FC = () => {
   const router = useRouter()
@@ -36,8 +36,13 @@ const LoginPage: React.FC = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password)
       router.push('/app/client-portal')
-    } catch (err: any) {
-      setError(err.message)
+    } catch (err: unknown) {
+      // Type the error as unknown
+      if (err instanceof FirebaseError) {
+        setError(err.message)
+      } else {
+        setError('An unexpected error occurred. Please try again.')
+      }
     }
   }
 
@@ -46,9 +51,14 @@ const LoginPage: React.FC = () => {
 
     try {
       await signInWithPopup(auth, googleProvider)
-      router.push('/app/client-portal')
-    } catch (err: any) {
-      setError(err.message)
+      router.push('/client-portal')
+    } catch (err: unknown) {
+      // Type the error as unknown
+      if (err instanceof FirebaseError) {
+        setError(err.message)
+      } else {
+        setError('An unexpected error occurred. Please try again.')
+      }
     }
   }
 
@@ -63,12 +73,19 @@ const LoginPage: React.FC = () => {
         )}
 
         {/* Google Login Button */}
-        <ActionButton onClick={handleGoogleLogin} className='mb-'>
+        <ActionButton onClick={handleGoogleLogin} className='mb-4'>
           Continue with Google
         </ActionButton>
 
+        {/* Divider */}
+        <div className='flex items-center my-4'>
+          <hr className='flex-grow border-gray-300' />
+          <span className='mx-2 text-gray-500'>OR</span>
+          <hr className='flex-grow border-gray-300' />
+        </div>
+
         {/* Email/Password Login Form */}
-        <form onSubmit={handleEmailLogin}>
+        <form className={styles.form} onSubmit={handleEmailLogin}>
           <InputField
             id='email'
             label='Email'
@@ -77,7 +94,6 @@ const LoginPage: React.FC = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
             placeholder='you@example.com'
-            
           />
 
           <InputField
@@ -88,10 +104,15 @@ const LoginPage: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
             placeholder='********'
-            className='' 
+            className=''
           />
 
-          <SubmitButton type='submit' className={`background-bg4 border-hl4 ${styles.btn}`}>Login</SubmitButton>
+          <SubmitButton
+            type='submit'
+            className={`background-bg4 border-hl4 ${styles.btn}`}
+          >
+            Login
+          </SubmitButton>
         </form>
       </div>
     </GridCenterSection>

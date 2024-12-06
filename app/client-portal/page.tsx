@@ -2,17 +2,33 @@
 
 'use client'
 
-import React from 'react'
-import GridCenterSection from '@/components/layouts/sections/GridCenterSection' // Adjust the import path as necessary
+import React, { useState } from 'react'
+import GridCenterSection from '@/components/layouts/sections/GridCenterSection'
+import PageHeading from '@/components/typography/page-heading/PageHeading'
+import EditProfileModal from '@/components/modals/edit-profile-modal/EditProfileModal'
 
 const ClientPortalPage: React.FC = () => {
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false)
+
+  const openProfileModal = () => {
+    setIsProfileModalOpen(true)
+  }
+
+  const closeProfileModal = () => {
+    setIsProfileModalOpen(false)
+  }
+
   return (
-    <GridCenterSection id='client-portal' className='bg-bg1 p-8'>
-      <h1 className='text-3xl font-bold mb-4'>Welcome to Your Client Portal</h1>
-      <p className='mb-6'>
-        Here you can access your personalized dashboard and resources.
-      </p>
-      {/* Add more client-specific UI components here */}
+    <GridCenterSection id='client-portal'>
+      <PageHeading>Welcome to the Client Portal</PageHeading>
+      <div>
+        <button onClick={openProfileModal}>View Profile</button>
+
+        <EditProfileModal
+          isOpen={isProfileModalOpen}
+          onClose={closeProfileModal}
+        />
+      </div>
     </GridCenterSection>
   )
 }

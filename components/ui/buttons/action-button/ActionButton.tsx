@@ -17,7 +17,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({
   onClick,
 }) => {
   return (
-    <button onClick={onClick} className={`py-2 border-2 br-2 background-bg2 border-hl2 font-header fw-bold ${styles.actionButton} ${className}`}>
+    <button onClick={onClick} className={`mt-200 py-100 px-300 border-2 br-2 bs2 background-bg2 border-hl2 font-header fw-bold ${styles.actionButton} ${className}`}>
       {children}
     </button>
   )
