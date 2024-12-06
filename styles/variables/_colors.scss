@@ -1,0 +1,42 @@
+:root {
+
+    --text: 240 1% 17%; // #2B2B2C
+    --background: 0 0% 87%; // #DFDFDF
+    --link: 251 88% 22%; // #1A076B
+    --link-hover: 251 75% 35%; // #30169E
+    --input-background: 150 71% 95%; // #E7FBF1
+    --input-border: 150 72% 56%; // #3DE08E
+
+    --bg1: 221 67% 82%; // #B2C6F0
+    --bg2: 165 67% 82%; // #B2F0E0
+    --bg3: 96 67% 82%; // #CBF0B2
+    --bg4: 61 67% 82%; // #EFF0B2
+    --bg5: 32 67% 82%; // #F0D3B2
+    --bg6: 0 67% 82%; // #F0B2B2-+
+    --bg7: 284 67% 82%; // #DFB2F0
+    --bg8: 328 67% 82%; // #F0B2D3
+
+    --h1: 221 79% 61%; // #4C7FEA
+    --h2: 164 75% 57%; // #3EE3B8
+    --h3: 96 76% 55%; // #7AE334
+    --h4: 61 77% 57%; // #E3E63D
+    --h5: 32 79% 57%; // #E8983D
+    --h6: 0 80% 63%; // #EC5757
+    --h7: 284 80% 57%; // #B93AE9
+    --h8: 328 796% 57%; // #E53E97
+}
+
+$background-colors: (
+  'bg1': 'bg1',
+  'bg2': 'bg2',
+  'bg3': 'bg3',
+  'bg4': 'bg4',
+  'bg5': 'bg5',
+  'bg6': 'bg6',
+  'bg7': 'bg7',
+  'bg8': 'bg8',
+  'background': 'background',
+  'link': 'link',
+  'link-hover': 'link-hover',
+  'input-background': 'input-background'
+);
