@@ -1,0 +1,13 @@
+@use '../../../styles/mixins' as *;
+
+.closeIcon {
+  height: 4rem;
+  width: 4rem;
+  @include transitionMain;
+
+  &:hover,
+  &:focus {
+    box-shadow: var(--bs-400);
+    cursor: pointer;
+  }
+}

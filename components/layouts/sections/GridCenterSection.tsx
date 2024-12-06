@@ -15,7 +15,7 @@ const GridCenterSection: React.FC<GridCenterSectionProps> = ({
   id
 }) => {
   return (
-    <section id={id} className={`h-full py-800 max-w-90 ${styles.gridCenterSection} ${className}`}>
+    <section id={id} className={`h-full py-800 px-400 max-w-90 ${styles.gridCenterSection} ${className}`}>
       {children}
     </section>
   )

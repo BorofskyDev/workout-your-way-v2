@@ -29,8 +29,8 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title='Profile'>
-      <div>
+    <Modal className='background-bg6 border-3 border-hl6' isOpen={isOpen} onClose={onClose} title='Profile'>
+      <div className='flex-col-center gap-400'>
         <p>Email: {user?.email}</p>
         
         <SubmitButton type='button' onClick={handleEditProfile}>

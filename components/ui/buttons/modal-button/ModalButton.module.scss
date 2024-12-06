@@ -1,0 +1,10 @@
+@use '../../../../styles/mixins' as *;
+
+.modalButton {
+    cursor: pointer;
+    @include transitionMain;
+
+    &:hover, &:focus {
+        box-shadow: var(--bs-400);
+    }
+}

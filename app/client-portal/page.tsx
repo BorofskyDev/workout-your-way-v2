@@ -3,9 +3,10 @@
 'use client'
 
 import React, { useState } from 'react'
-import GridCenterSection from '@/components/layouts/sections/GridCenterSection'
 import PageHeading from '@/components/typography/page-heading/PageHeading'
 import EditProfileModal from '@/components/modals/edit-profile-modal/EditProfileModal'
+import styles from './page.module.scss'
+import ModalButton from '@/components/ui/buttons/modal-button/ModalButton'
 
 const ClientPortalPage: React.FC = () => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false)
@@ -19,17 +20,17 @@ const ClientPortalPage: React.FC = () => {
   }
 
   return (
-    <GridCenterSection id='client-portal'>
-      <PageHeading>Welcome to the Client Portal</PageHeading>
+    <main className={`px-400 py-800 ${styles.profilePage}`} id='client-portal'>
+      <PageHeading>Client Portal</PageHeading>
       <div>
-        <button onClick={openProfileModal}>View Profile</button>
+        <ModalButton className='background-bg6 border-hl6' onClick={openProfileModal}>View Profile</ModalButton>
 
         <EditProfileModal
           isOpen={isProfileModalOpen}
           onClose={closeProfileModal}
         />
       </div>
-    </GridCenterSection>
+    </main>
   )
 }
 

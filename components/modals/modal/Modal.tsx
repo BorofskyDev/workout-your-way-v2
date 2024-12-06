@@ -5,21 +5,24 @@
 import React, { ReactNode } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './Modal.module.scss'
+import SubSectionHeading from '@/components/typography/sub-section-heading/SubSectionHeading'
+import ClosedIcon from '@/components/icons/close-icon/CloseIcon'
 
 interface ModalProps {
   isOpen: boolean
   onClose: () => void
   title: string
   children: ReactNode
+  className?: string
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, className }) => {
   return (
     <AnimatePresence>
       {isOpen && (
         <div className={styles.modalOverlay} onClick={onClose}>
           <motion.div
-            className={styles.modalContent}
+            className={`background-main br-5 bs8 px-200 py-400 ${styles.modalContent} ${className}`}
             onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
               e.stopPropagation()
             }
@@ -29,9 +32,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           >
             <div className={styles.modalHeader}>
-              <h2>{title}</h2>
+              <SubSectionHeading>{title}</SubSectionHeading>
               <button onClick={onClose} aria-label='Close Modal'>
-                &times;
+                <ClosedIcon className='background-input fill-text' />
               </button>
             </div>
             <div className={styles.modalBody}>{children}</div>
