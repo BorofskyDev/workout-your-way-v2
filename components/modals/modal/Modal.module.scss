@@ -15,8 +15,8 @@
   .modalContent {
     width: 90%;
     max-width: 500px;
-    
-    overflow: hidden;
+    height: 100%;
+    overflow: auto;
     position: relative;
 
     .modalHeader {

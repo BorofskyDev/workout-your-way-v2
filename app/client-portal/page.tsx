@@ -5,16 +5,19 @@
 import React, { useState } from 'react'
 import PageHeading from '@/components/typography/page-heading/PageHeading'
 import EditProfileModal from '@/components/modals/edit-profile-modal/EditProfileModal'
-import CreateExerciseModal from '@/components/modals/create-exercise-modal/CreateExerciseModal' // Existing Import
-import CreateSetModal from '@/components/modals/create-set-modal/CreateSetModal' // New Import
+import CreateExerciseModal from '@/components/modals/create-exercise-modal/CreateExerciseModal'
+import CreateSetModal from '@/components/modals/create-set-modal/CreateSetModal'
+import CreateProgramModal from '@/components/modals/create-program-modal/CreateProgramModal' // New Import
 import styles from './page.module.scss'
 import ModalButton from '@/components/ui/buttons/modal-button/ModalButton'
 
 const ClientPortalPage: React.FC = () => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false)
   const [isCreateExerciseModalOpen, setIsCreateExerciseModalOpen] =
-    useState<boolean>(false) // Existing State
+    useState<boolean>(false)
   const [isCreateSetModalOpen, setIsCreateSetModalOpen] =
+    useState<boolean>(false)
+  const [isCreateProgramModalOpen, setIsCreateProgramModalOpen] =
     useState<boolean>(false) // New State
 
   const openProfileModal = () => {
@@ -41,6 +44,14 @@ const ClientPortalPage: React.FC = () => {
     setIsCreateSetModalOpen(false)
   }
 
+  const openCreateProgramModal = () => {
+    setIsCreateProgramModalOpen(true)
+  }
+
+  const closeCreateProgramModal = () => {
+    setIsCreateProgramModalOpen(false)
+  }
+
   return (
     <main className={`px-400 py-800 ${styles.profilePage}`} id='client-portal'>
       <PageHeading>Client Portal</PageHeading>
@@ -65,6 +76,13 @@ const ClientPortalPage: React.FC = () => {
         >
           Manage Sets
         </ModalButton>
+
+        <ModalButton
+          className='background-bg5 border-hl5' // Adjust styling as needed
+          onClick={openCreateProgramModal}
+        >
+          Create Program
+        </ModalButton>
       </div>
 
       {/* Existing Edit Profile Modal */}
@@ -79,10 +97,16 @@ const ClientPortalPage: React.FC = () => {
         onClose={closeCreateExerciseModal}
       />
 
-      {/* New Create Set Modal */}
+      {/* Existing Create Set Modal */}
       <CreateSetModal
         isOpen={isCreateSetModalOpen}
         onClose={closeCreateSetModal}
+      />
+
+      {/* New Create Program Modal */}
+      <CreateProgramModal
+        isOpen={isCreateProgramModalOpen}
+        onClose={closeCreateProgramModal}
       />
     </main>
   )

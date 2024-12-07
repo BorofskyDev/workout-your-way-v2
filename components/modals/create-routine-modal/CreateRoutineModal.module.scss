@@ -1,0 +1,53 @@
+/* components/modals/create-routine-modal/CreateRoutineModal.module.scss */
+@use '../../../styles/mixins' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--small-spacing-200);
+}
+
+.routineTypeContainer,
+.setsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.setRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.addButton {
+  cursor: pointer;
+  @include transitionMain;
+
+  &:hover,
+  &:focus {
+    box-shadow: var(--bs-400);
+  }
+}
+
+.removeButton {
+  
+  cursor: pointer;
+  @include transitionMain;
+
+  &:hover {
+    box-shadow: var(--bs-400);
+  }
+}
+
+.error {
+  color: red;
+  font-size: 0.875rem;
+}
