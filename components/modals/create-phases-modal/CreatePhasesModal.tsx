@@ -18,7 +18,7 @@ interface CreatePhasesModalProps {
   onClose: () => void
   numberOfPhases: number
   numberOfWeeks: number
-  programData?: Omit<Program, 'phases'>
+  programData: Omit<Program, 'phases'>
 }
 
 const CreatePhasesModal: React.FC<CreatePhasesModalProps> = ({
