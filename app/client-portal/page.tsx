@@ -8,6 +8,7 @@ import EditProfileModal from '@/components/modals/edit-profile-modal/EditProfile
 import CreateExerciseModal from '@/components/modals/create-exercise-modal/CreateExerciseModal'
 import CreateSetModal from '@/components/modals/create-set-modal/CreateSetModal'
 import CreateProgramModal from '@/components/modals/create-program-modal/CreateProgramModal' // New Import
+import CreateRoutineModal from '@/components/modals/create-routine-modal/CreateRoutineModal'
 import styles from './page.module.scss'
 import ModalButton from '@/components/ui/buttons/modal-button/ModalButton'
 
@@ -19,6 +20,7 @@ const ClientPortalPage: React.FC = () => {
     useState<boolean>(false)
   const [isCreateProgramModalOpen, setIsCreateProgramModalOpen] =
     useState<boolean>(false) // New State
+    const [isCreateRoutineModalOpen, setIsCreateRoutineModalOpen] = useState<boolean>(false)
 
   const openProfileModal = () => {
     setIsProfileModalOpen(true)
@@ -52,6 +54,14 @@ const ClientPortalPage: React.FC = () => {
     setIsCreateProgramModalOpen(false)
   }
 
+  const openCreateRoutineModal = () => {
+    setIsCreateRoutineModalOpen(true)
+  }
+
+  const closeCreateRoutineModal = () => {
+    setIsCreateRoutineModalOpen(false)
+  }
+
   return (
     <main className={`px-400 py-800 ${styles.profilePage}`} id='client-portal'>
       <PageHeading>Client Portal</PageHeading>
@@ -76,6 +86,11 @@ const ClientPortalPage: React.FC = () => {
         >
           Manage Sets
         </ModalButton>
+
+        <ModalButton
+          className='background-bg4 border-hl4' // Adjust styling as needed
+          onClick={openCreateRoutineModal}
+        >Create Routine </ModalButton>
 
         <ModalButton
           className='background-bg5 border-hl5' // Adjust styling as needed
@@ -107,6 +122,11 @@ const ClientPortalPage: React.FC = () => {
       <CreateProgramModal
         isOpen={isCreateProgramModalOpen}
         onClose={closeCreateProgramModal}
+      />
+
+      <CreateRoutineModal
+        isOpen={isCreateRoutineModalOpen}
+        onClose={closeCreateRoutineModal}
       />
     </main>
   )

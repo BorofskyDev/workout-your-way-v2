@@ -25,7 +25,7 @@ const LoginPage: React.FC = () => {
 
   // Redirect authenticated users to the client portal
   if (!loading && user) {
-    router.push('/app/client-portal')
+    router.push('/client-portal')
     return null
   }
 

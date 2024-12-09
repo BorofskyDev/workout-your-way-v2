@@ -1,5 +1,3 @@
-// components/modals/create-program-modal/CreateProgramModal.tsx
-
 'use client'
 
 import React, { useState } from 'react'
@@ -9,12 +7,15 @@ import NumberInputField from '@/components/ui/inputs/number-input-field/NumberIn
 import SubmitButton from '@/components/ui/buttons/submit-button/SubmitButton'
 import useCreateProgram from '@/libs/hooks/useCreateProgram'
 import CreatePhasesModal from '../create-phases-modal/CreatePhasesModal'
+import { useUser } from '@/context/UserContext' // <-- Import useUser
 import styles from './CreateProgramModal.module.scss'
 
 const CreateProgramModal: React.FC<{
   isOpen: boolean
   onClose: () => void
 }> = ({ isOpen, onClose }) => {
+  const { user } = useUser() // <-- Access the user context
+
   const {
     name,
     setName,
@@ -33,7 +34,6 @@ const CreateProgramModal: React.FC<{
   const openCreatePhasesModal = () => {
     // Validate before opening phases modal
     if (!name.trim()) {
-      // Handle validation
       alert('Program name is required.')
       return
     }
@@ -68,7 +68,6 @@ const CreateProgramModal: React.FC<{
           }}
           className={styles.form}
         >
-          {/* Program Name */}
           <InputField
             id='programName'
             label='Program Name'
@@ -79,7 +78,6 @@ const CreateProgramModal: React.FC<{
             placeholder='Enter program name'
           />
 
-          {/* Number of Weeks */}
           <NumberInputField
             id='numberOfWeeks'
             label='Number of Weeks'
@@ -89,7 +87,6 @@ const CreateProgramModal: React.FC<{
             placeholder='Enter number of weeks'
           />
 
-          {/* Number of Phases */}
           <NumberInputField
             id='numberOfPhases'
             label='Number of Phases'
@@ -99,7 +96,6 @@ const CreateProgramModal: React.FC<{
             placeholder='Enter number of phases'
           />
 
-          {/* Program Description */}
           <InputField
             variant='textarea'
             id='programDescription'
@@ -110,21 +106,28 @@ const CreateProgramModal: React.FC<{
             placeholder='Enter program description'
           />
 
-          {/* Display Form Error */}
           {formError && <p className={styles.error}>{formError}</p>}
 
-          {/* Submit Button */}
           <SubmitButton type='submit'>Create Phases</SubmitButton>
         </form>
       </Modal>
 
-      {/* Create Phases Modal */}
-      <CreatePhasesModal
-        isOpen={isCreatePhasesModalOpen}
-        onClose={closeCreatePhasesModal}
-        numberOfPhases={parseInt(numberOfPhases, 10)}
-        numberOfWeeks={parseInt(numberOfWeeks, 10)}
-      />
+      {/* Pass user.uid as ownerId */}
+      {user && (
+        <CreatePhasesModal
+          isOpen={isCreatePhasesModalOpen}
+          onClose={closeCreatePhasesModal}
+          numberOfPhases={parseInt(numberOfPhases, 10)}
+          numberOfWeeks={parseInt(numberOfWeeks, 10)}
+          programData={{
+            name: name.trim(),
+            description: description.trim(),
+            numberOfWeeks: parseInt(numberOfWeeks, 10),
+            numberOfPhases: parseInt(numberOfPhases, 10),
+            ownerId: user.uid, 
+          }}
+        />
+      )}
     </>
   )
 }
