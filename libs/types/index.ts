@@ -1,4 +1,4 @@
-// libs/types.ts
+// libs/types/index.ts
 
 
 
@@ -23,5 +23,6 @@ export interface Program {
   description: string
   phases: PhaseTemplate[]
   ownerId: string
+  id?: string
 }
 

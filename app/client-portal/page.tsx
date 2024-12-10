@@ -1,5 +1,3 @@
-// app/client-portal/page.tsx
-
 'use client'
 
 import React, { useState } from 'react'
@@ -7,60 +5,23 @@ import PageHeading from '@/components/typography/page-heading/PageHeading'
 import EditProfileModal from '@/components/modals/edit-profile-modal/EditProfileModal'
 import CreateExerciseModal from '@/components/modals/create-exercise-modal/CreateExerciseModal'
 import CreateSetModal from '@/components/modals/create-set-modal/CreateSetModal'
-import CreateProgramModal from '@/components/modals/create-program-modal/CreateProgramModal' // New Import
+import CreateProgramModal from '@/components/modals/create-program-modal/CreateProgramModal'
 import CreateRoutineModal from '@/components/modals/create-routine-modal/CreateRoutineModal'
-import styles from './page.module.scss'
 import ModalButton from '@/components/ui/buttons/modal-button/ModalButton'
+import { useRouter } from 'next/navigation' // Using Next.js 13+ navigation
+import styles from './page.module.scss'
 
 const ClientPortalPage: React.FC = () => {
-  const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false)
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false)
   const [isCreateExerciseModalOpen, setIsCreateExerciseModalOpen] =
-    useState<boolean>(false)
-  const [isCreateSetModalOpen, setIsCreateSetModalOpen] =
-    useState<boolean>(false)
+    useState(false)
+  const [isCreateSetModalOpen, setIsCreateSetModalOpen] = useState(false)
   const [isCreateProgramModalOpen, setIsCreateProgramModalOpen] =
-    useState<boolean>(false) // New State
-    const [isCreateRoutineModalOpen, setIsCreateRoutineModalOpen] = useState<boolean>(false)
+    useState(false)
+  const [isCreateRoutineModalOpen, setIsCreateRoutineModalOpen] =
+    useState(false)
 
-  const openProfileModal = () => {
-    setIsProfileModalOpen(true)
-  }
-
-  const closeProfileModal = () => {
-    setIsProfileModalOpen(false)
-  }
-
-  const openCreateExerciseModal = () => {
-    setIsCreateExerciseModalOpen(true)
-  }
-
-  const closeCreateExerciseModal = () => {
-    setIsCreateExerciseModalOpen(false)
-  }
-
-  const openCreateSetModal = () => {
-    setIsCreateSetModalOpen(true)
-  }
-
-  const closeCreateSetModal = () => {
-    setIsCreateSetModalOpen(false)
-  }
-
-  const openCreateProgramModal = () => {
-    setIsCreateProgramModalOpen(true)
-  }
-
-  const closeCreateProgramModal = () => {
-    setIsCreateProgramModalOpen(false)
-  }
-
-  const openCreateRoutineModal = () => {
-    setIsCreateRoutineModalOpen(true)
-  }
-
-  const closeCreateRoutineModal = () => {
-    setIsCreateRoutineModalOpen(false)
-  }
+  const router = useRouter()
 
   return (
     <main className={`px-400 py-800 ${styles.profilePage}`} id='client-portal'>
@@ -68,65 +29,67 @@ const ClientPortalPage: React.FC = () => {
       <div className={styles.buttonGroup}>
         <ModalButton
           className='background-bg8 border-hl8'
-          onClick={openProfileModal}
+          onClick={() => setIsProfileModalOpen(true)}
         >
           View Profile
         </ModalButton>
 
         <ModalButton
           className='background-bg1 border-hl1'
-          onClick={openCreateExerciseModal}
+          onClick={() => setIsCreateExerciseModalOpen(true)}
         >
           Create Exercise
         </ModalButton>
 
         <ModalButton
-          className='background-bg3 border-hl3' // Adjust styling as needed
-          onClick={openCreateSetModal}
+          className='background-bg3 border-hl3'
+          onClick={() => setIsCreateSetModalOpen(true)}
         >
           Manage Sets
         </ModalButton>
 
         <ModalButton
-          className='background-bg4 border-hl4' // Adjust styling as needed
-          onClick={openCreateRoutineModal}
-        >Create Routine </ModalButton>
+          className='background-bg4 border-hl4'
+          onClick={() => setIsCreateRoutineModalOpen(true)}
+        >
+          Create Routine
+        </ModalButton>
 
         <ModalButton
-          className='background-bg5 border-hl5' // Adjust styling as needed
-          onClick={openCreateProgramModal}
+          className='background-bg5 border-hl5'
+          onClick={() => setIsCreateProgramModalOpen(true)}
         >
           Create Program
         </ModalButton>
+
+        {/* New "View Active Program" button */}
+        <ModalButton
+          className='background-bg6 border-hl6'
+          onClick={() => router.push('/active-program')}
+        >
+          View Active Program
+        </ModalButton>
       </div>
 
-      {/* Existing Edit Profile Modal */}
       <EditProfileModal
         isOpen={isProfileModalOpen}
-        onClose={closeProfileModal}
+        onClose={() => setIsProfileModalOpen(false)}
       />
-
-      {/* Existing Create Exercise Modal */}
       <CreateExerciseModal
         isOpen={isCreateExerciseModalOpen}
-        onClose={closeCreateExerciseModal}
+        onClose={() => setIsCreateExerciseModalOpen(false)}
       />
-
-      {/* Existing Create Set Modal */}
       <CreateSetModal
         isOpen={isCreateSetModalOpen}
-        onClose={closeCreateSetModal}
+        onClose={() => setIsCreateSetModalOpen(false)}
       />
-
-      {/* New Create Program Modal */}
       <CreateProgramModal
         isOpen={isCreateProgramModalOpen}
-        onClose={closeCreateProgramModal}
+        onClose={() => setIsCreateProgramModalOpen(false)}
       />
-
       <CreateRoutineModal
         isOpen={isCreateRoutineModalOpen}
-        onClose={closeCreateRoutineModal}
+        onClose={() => setIsCreateRoutineModalOpen(false)}
       />
     </main>
   )

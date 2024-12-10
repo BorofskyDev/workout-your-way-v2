@@ -69,6 +69,7 @@ const CreatePhasesModal: React.FC<CreatePhasesModalProps> = ({
   }
 
   // Function to handle form submission and program creation
+  // Function to handle form submission and program creation
   const handleSaveAllPhases = (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -98,8 +99,14 @@ const CreatePhasesModal: React.FC<CreatePhasesModalProps> = ({
       return
     }
 
+    // Construct the full program data including phases
+    const fullProgramData: Program = {
+      ...programData, // name, numberOfWeeks, etc.
+      phases: phases, // add the phases here
+    }
+
     // Proceed to save all phases and create the program
-    saveAllPhases(programData)
+    saveAllPhases(fullProgramData)
     onClose()
   }
 
@@ -230,7 +237,7 @@ const CreatePhasesModal: React.FC<CreatePhasesModalProps> = ({
           {formError && <p className={styles.error}>{formError}</p>}
 
           {/* Save All Phases Button */}
-          <SubmitButton type='submit' >
+          <SubmitButton type='submit'>
             {loading ? 'Saving...' : 'Save All Phases'}
           </SubmitButton>
         </form>
